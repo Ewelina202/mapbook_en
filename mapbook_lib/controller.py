@@ -1,17 +1,17 @@
-def read_data(users_data: list)->None:
+def read_data(users_data: list) -> None:
     for user in users_data:
         print(
             f'twój znajomy {user['username']} z miejscowości {user['location']} opubikował {user['posts']} wiadomości. Ostatnia wiadomość {user['usermassage'][-1]}')
 
 
-def add_user(users_data:list)->None:
+def add_user(users_data: list) -> None:
+    name = input('Podaj imie: ')
+    location = input('Podaj lokalizację: ')
+    posts = int(input('Podaj liczbę postów: '))
+    usermassage = ['']
+    users_data.append({'username': name, 'location': location, 'posts': posts,
+                       'usermassage': usermassage})
 
-    name=input('Podaj imie: ')
-    location=input('Podaj lokalizację: ')
-    posts=int(input('Podaj liczbę postów: '))
-    usermassage=['']
-    users_data.append( {'username': name, 'location': location, 'posts': posts,
-         'usermassage': usermassage})
 
 def remove_user(users_data: list) -> None:
     name = input('Podaj imie użytownika do usunięcia: ')
@@ -19,3 +19,13 @@ def remove_user(users_data: list) -> None:
     for user in users_data:
         if user['username'] == name:
             users_data.remove(user)
+
+
+def update_user(users_data: list) -> None:
+    name = input('Podaj imie użytkownika do zmiany: ')
+
+    for user in users_data:
+        if user['username'] == name:
+            user['username'] = input('Podaj nowe imie: ')
+            user['location'] = input('Podaj nową lokalizację: ')
+            user['posts'] = int(input('Podaj liczbę postów: '))
